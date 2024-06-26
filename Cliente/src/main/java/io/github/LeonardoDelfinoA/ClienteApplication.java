@@ -9,16 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @SpringBootApplication
 @EntityScan({"io.github.LeonardoDelfinoA.model"})
-public class ClienteApplication {
-
-	/*@Bean
-	public CommandLineRunner run( @Autowired ClienteRepository repository ) {
-		return args -> {
-			Cliente cliente = Cliente.builder().cpf("00000000000").nome("Fulano").build();
-			repository.save(cliente);
-		};
-	}*/
-	
+public class ClienteApplication {	
 	
 	@Autowired
 	@Qualifier("applicationName")
