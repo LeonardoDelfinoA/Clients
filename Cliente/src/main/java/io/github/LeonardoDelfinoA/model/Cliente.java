@@ -2,8 +2,6 @@ package io.github.LeonardoDelfinoA.model;
 
 import java.time.LocalDate;
 
-import org.antlr.v4.runtime.misc.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
@@ -28,17 +26,17 @@ public class Cliente {
 	private Integer id;
 	
 	@Column(nullable = false, length = 150)
-	private String nome;
+	private String name;
 	
 	@Column(nullable = false, length = 11)
 	private String cpf;
 	
 	@Column(name = "data_cadastro", updatable = false)
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	private LocalDate dataCadastro;
+	private LocalDate dateRegister;
 	
 	@PrePersist
 	public void prePersist() {
-		setDataCadastro(LocalDate.now());
+		setDateRegister(LocalDate.now());
 	}
 }

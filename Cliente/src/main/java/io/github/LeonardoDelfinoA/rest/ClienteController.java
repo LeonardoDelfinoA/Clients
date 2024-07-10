@@ -1,6 +1,9 @@
 package io.github.LeonardoDelfinoA.rest;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +20,7 @@ import io.github.LeonardoDelfinoA.repositories.ClienteRepository;
 
 @RestController
 @RequestMapping("/api/clientes")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ClienteController {
 
 	private final ClienteRepository repository;
@@ -25,20 +29,28 @@ public class ClienteController {
 		this.repository = repository;
 	}
 	
+	@GetMapping
+	@CrossOrigin(origins = "http://localhost:4200")
+	public List<Cliente> findAll() {
+		return repository.findAll();
+	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
+	@CrossOrigin(origins = "http://localhost:4200")
 	public Cliente save(@RequestBody Cliente cliente) {
 		return repository.save(cliente);
 	}
 	
 	@GetMapping("/{id}")
+	@CrossOrigin(origins = "http://localhost:4200")
 	public Cliente getById( @PathVariable Integer id ) {
 		return repository.findById(id).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
 	}
 	
 	@DeleteMapping("{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@CrossOrigin(origins = "http://localhost:4200")
 	public void delete( @PathVariable Integer id ) {
 		repository
 			.findById(id)
@@ -51,6 +63,7 @@ public class ClienteController {
 	
 	@PutMapping("{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@CrossOrigin(origins = "http://localhost:4200")
 	public void atualizar( @PathVariable Integer id, @RequestBody Cliente updatedClient ) {
 		repository
 		.findById(id)
