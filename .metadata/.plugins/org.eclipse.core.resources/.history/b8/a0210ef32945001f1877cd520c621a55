@@ -1,0 +1,5 @@
+package io.github.LeonardoDelfinoA.config;
+
+public class WebConfig {
+
+}

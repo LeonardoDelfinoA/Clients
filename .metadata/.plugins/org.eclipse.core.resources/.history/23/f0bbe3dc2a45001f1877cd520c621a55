@@ -1,0 +1,23 @@
+package io.github.LeonardoDelfinoA.config;
+
+import java.util.Arrays;
+
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+
+@Configuration
+public class WebConfig {
+	
+	@Bean
+	public FilterRegistrationBean<CorsFilter> corsFilterFilterRegistrationBean() {
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		CorsConfiguration corsConfiguration = new CorsConfiguration();
+		corsConfiguration.setAllowedOrigins(Arrays.asList("*"));
+		corsConfiguration.setAllowedOrigins(all);
+		return null;
+	}
+}
